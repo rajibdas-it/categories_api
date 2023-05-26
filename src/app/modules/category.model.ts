@@ -31,7 +31,7 @@ import { ICategory } from "./category.interface";
 const categorySchema = new Schema({
   name: { type: String, required: true, trim: true, unique: true },
   parent: { type: Schema.Types.ObjectId, ref: "Category", default: null },
-  products: [{ type: Schema.Types.ObjectId, ref: "Product" }],
+  // products: [{ type: Schema.Types.ObjectId, ref: "Product" }],
   isActive: { type: Boolean, default: true },
 });
 

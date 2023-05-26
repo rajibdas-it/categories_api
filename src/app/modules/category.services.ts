@@ -29,14 +29,14 @@ export const searchCategoryService = async (category) => {
         as: "parentCategory",
       },
     },
-    {
-      $project: {
-        name: 1,
-        parentCategory: {
-          $arrayElemAt: ["$parentCategory", 0],
-        },
-      },
-    },
+    // {
+    //   $project: {
+    //     name: 1,
+    //     parentCategory: {
+    //       $arrayElemAt: ["$parentCategory", 1],
+    //     },
+    //   },
+    // },
   ]);
 
   return result;
