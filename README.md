@@ -14,9 +14,9 @@
 
 - Clone the repository
 - Navigate to the project directory
-- Install the dependencies: \*\*npm install\*\*
+- Install the dependencies: ** npm install **
 - Set up the MongoDB database and provide the database connection URL in the configuration.
-- Run the application: \*\*npm run dev\*\*
+- Run the application: ** npm run dev **
 
 ### Usage
 
