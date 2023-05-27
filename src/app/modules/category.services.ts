@@ -18,12 +18,12 @@ export const getCategoriesService = async (): Promise<ICategory[]> => {
 };
 
 export const searchCategoryService = async (
-  category: any
+  search: any
 ): Promise<ICategory[]> => {
   const result = Category.aggregate([
     {
       $match: {
-        name: category,
+        name: search,
       },
     },
     {

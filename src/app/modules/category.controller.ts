@@ -42,9 +42,9 @@ export const getCategoriesController = async (req: Request, res: Response) => {
 
 export const searchCategoryController = async (req: Request, res: Response) => {
   try {
-    if (req.query.category) {
-      const category = req.query.category;
-      const result = await searchCategoryService(category);
+    if (req.query.search) {
+      const searchValue = req.query.search;
+      const result = await searchCategoryService(searchValue);
       res.status(200).json({
         status: "Success",
         data: result,
