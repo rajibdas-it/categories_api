@@ -14,9 +14,9 @@
 
 - Clone the repository
 - Navigate to the project directory
-- Install the dependencies: \*\*npm install
+- Install the dependencies: \*\*npm install\*\*
 - Set up the MongoDB database and provide the database connection URL in the configuration.
-- Run the application: \*\*npm run dev
+- Run the application: \*\*npm run dev\*\*
 
 ### Usage
 
@@ -36,7 +36,7 @@
 
 ### Sample:
 
-# Create a Parent Category
+#### Create a Parent Category
 
 POST /api/v1/category
 Body:
@@ -44,7 +44,7 @@ Body:
 "name": "Electronics"
 }
 
-# Create a Child Category
+#### Create a Child Category
 
 POST /api/v1/category
 Body:
@@ -53,15 +53,15 @@ Body:
 "parent": "60a83a88c7d5e914c41da7f4" (Parent category ID)
 }
 
-# Get all Categories
+#### Get all Categories
 
 GET /api/v1/category
 
-# Get a Category
+#### Get a Category
 
 GET /api/v1/category/:id
 
-# Update a Category
+#### Update a Category
 
 PATCH /api/v1/category/edit/:id
 Body:
@@ -69,14 +69,14 @@ Body:
 "name": "Updated Category Name"
 }
 
-# Delete a Category
+#### Delete a Category
 
 DELETE api/v1/category/delete/:id
 
-# Search Categories
+#### Search Categories
 
 GET /api/v1/category?search=Accessories
 
-# Deactivate a Category
+#### Deactivate a Category
 
 PATCH api/v1/category/:id/deactivate
