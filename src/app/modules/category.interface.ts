@@ -1,5 +1,5 @@
-export interface ICategory {
+export interface ICategory extends Document {
   name: string;
-  parent: ICategory | null;
+  parent?: ICategory | null;
   isActive: boolean;
 }

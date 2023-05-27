@@ -1,12 +1,15 @@
+import { ICategory } from "./category.interface";
 import Category from "./category.model";
 
-export const createCategoryService = async (data) => {
+export const createCategoryService = async (
+  data: ICategory
+): Promise<ICategory> => {
   const category = new Category(data);
   await category.save();
   return category;
 };
 
-export const getCategoriesService = async () => {
+export const getCategoriesService = async (): Promise<ICategory[]> => {
   const categories = await Category.find({}).populate({
     path: "parent",
     populate: { path: "parent", populate: "parent" },
@@ -14,7 +17,9 @@ export const getCategoriesService = async () => {
   return categories;
 };
 
-export const searchCategoryService = async (category) => {
+export const searchCategoryService = async (
+  category: any
+): Promise<ICategory[]> => {
   const result = Category.aggregate([
     {
       $match: {
@@ -29,20 +34,21 @@ export const searchCategoryService = async (category) => {
         as: "parentCategory",
       },
     },
-    // {
-    //   $project: {
-    //     name: 1,
-    //     parentCategory: {
-    //       $arrayElemAt: ["$parentCategory", 1],
-    //     },
-    //   },
-    // },
   ]);
 
   return result;
 };
 
-export const deactiveCategoryService = async (id) => {
+export const getCategoryService = async (
+  id: any
+): Promise<ICategory | null> => {
+  const category = Category.findById(id);
+  return category;
+};
+
+export const deactiveCategoryService = async (
+  id: any
+): Promise<ICategory | null> => {
   const category = await Category.findById(id);
   if (category) {
     category.isActive = false;
@@ -55,7 +61,10 @@ export const deactiveCategoryService = async (id) => {
   return category;
 };
 
-export const updateCategoryService = async (categoryId, data) => {
+export const updateCategoryService = async (
+  categoryId: any,
+  data: ICategory
+): Promise<ICategory | null> => {
   const { name, parent, isActive } = data;
   const result = await Category.findByIdAndUpdate(categoryId, {
     name,
@@ -65,7 +74,9 @@ export const updateCategoryService = async (categoryId, data) => {
   return result;
 };
 
-export const deleteCategoryService = async (categoryId) => {
+export const deleteCategoryService = async (
+  categoryId: any
+): Promise<ICategory | null> => {
   const result = await Category.findByIdAndDelete(categoryId);
   return result;
 };
