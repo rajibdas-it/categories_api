@@ -54,3 +54,18 @@ export const deactiveCategoryService = async (id) => {
   }
   return category;
 };
+
+export const updateCategoryService = async (categoryId, data) => {
+  const { name, parent, isActive } = data;
+  const result = await Category.findByIdAndUpdate(categoryId, {
+    name,
+    parent,
+    isActive,
+  });
+  return result;
+};
+
+export const deleteCategoryService = async (categoryId) => {
+  const result = await Category.findByIdAndDelete(categoryId);
+  return result;
+};
