@@ -41,3 +41,16 @@ export const searchCategoryService = async (category) => {
 
   return result;
 };
+
+export const deactiveCategoryService = async (id) => {
+  const category = await Category.findById(id);
+  if (category) {
+    category.isActive = false;
+    await category.save();
+    const childCategories = await Category.find({ parent: id });
+    for (const child of childCategories) {
+      await deactiveCategoryService(child._id);
+    }
+  }
+  return category;
+};

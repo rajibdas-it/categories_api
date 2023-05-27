@@ -1,5 +1,6 @@
 import {
   createCategoryService,
+  deactiveCategoryService,
   getCategoriesService,
   searchCategoryService,
 } from "./category.services";
@@ -41,4 +42,13 @@ export const searchCategoryController = async (req, res) => {
     const result = await getCategoriesService();
     res.json(result);
   }
+};
+
+export const deactiveCategoryController = async (req, res) => {
+  const id = req.params.id;
+  const result = await deactiveCategoryService(id);
+  res.status(200).json({
+    status: "Success",
+    data: result,
+  });
 };
